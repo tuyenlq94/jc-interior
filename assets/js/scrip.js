@@ -55,10 +55,21 @@ jQuery( function ( $ ) {
 			autoplaySpeed: 5000,
 			responsive: [
 				{
-					breakpoint: 600,
-					centerPadding: '0px',
+					breakpoint: 1023,
 					settings: {
-						slidesToShow: 1,
+						slidesPerRow: 3,
+					}
+				},
+				{
+					breakpoint: 767,
+					settings: {
+						slidesPerRow: 2,
+					}
+				},
+				{
+					breakpoint: 600,
+					settings: {
+						slidesPerRow: 1,
 					}
 				},
 			]
@@ -77,10 +88,21 @@ jQuery( function ( $ ) {
 			autoplaySpeed: 5000,
 			responsive: [
 				{
-					breakpoint: 600,
-					centerPadding: '0px',
+					breakpoint: 1023,
 					settings: {
 						slidesToShow: 1,
+					}
+				},
+				{
+					breakpoint: 767,
+					settings: {
+						slidesPerRow: 2,
+					}
+				},
+				{
+					breakpoint: 600,
+					settings: {
+						slidesPerRow: 1,
 					}
 				},
 			]
