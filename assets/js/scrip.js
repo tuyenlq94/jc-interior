@@ -35,41 +35,6 @@ jQuery( function ( $ ) {
 		} );
 	}
 
-	function filterPrice() {
-		var PriceMin = parseFloat( 0 );
-		var PriceMax = parseFloat( 5000 );
-
-		var currency_symbol = jQuery( ".filter-surrency-symbol" ).text();
-
-		$( "#priceUpRange2" ).slider( {
-			range: true,
-			min: PriceMin,
-			max: PriceMax,
-			values: [ PriceMin, PriceMax ],
-			slide: function ( event, ui ) {
-				$( "#price_up .filter-dynamic-data-min" ).text( currency_symbol + addCommas( ui.values[ 0 ] ) );
-				$( "#price_up .filter-dynamic-data-max" ).text( currency_symbol + addCommas( ui.values[ 1 ] ) );
-			}
-		} );
-
-		$( "#price_up span.filter-dynamic-data-min" ).text( currency_symbol + addCommas( $( "#priceUpRange2" ).slider( "values", 0 ) ) );
-		$( "#price_up span.filter-dynamic-data-max" ).text( currency_symbol + addCommas( $( "#priceUpRange2" ).slider( "values", 1 ) ) );
-
-		$( '#priceUpRange2' ).draggable();
-
-	}
-	function addCommas( nStr ) {
-		nStr += '';
-		var x = nStr.split( '.' );
-		var x1 = x[ 0 ];
-		var x2 = x.length > 1 ? '.' + x[ 1 ] : '';
-		var rgx = /(\d+)(\d{3})/;
-		while ( rgx.test( x1 ) ) {
-			x1 = x1.replace( rgx, '$1' + ' ' + '$2' );
-		}
-		return x1 + x2;
-	}
-
 	let slickSlide = () => {
 		$( '.slider-hero' ).slick( {
 			slidesToShow: 1,
@@ -79,14 +44,14 @@ jQuery( function ( $ ) {
 			autoplay: true,
 			autoplaySpeed: 5000,
 		} );
-		$( '.rentKing-pots' ).slick( {
-			slidesToShow: 4,
+		$( '.tab-section_0' ).slick( {
+			slidesPerRow: 4,
 			dots: false,
 			arrows: true,
-			rows: 0,
+			rows: 2,
 			autoplay: false,
-			prevArrow: "<button type='button' class='slick-prev pull-left'><i class='fas fa-chevron-left'></i></button>",
-			nextArrow: "<button type='button' class='slick-next pull-right'><i class='fas fa-chevron-right'></i></button>",
+			prevArrow: "<button type='button' class='slick-prev pull-left'></button>",
+			nextArrow: "<button type='button' class='slick-next pull-right'></button>",
 			autoplaySpeed: 5000,
 			responsive: [
 				{
@@ -98,28 +63,42 @@ jQuery( function ( $ ) {
 				},
 			]
 		} );
-		$( '.slider-for' ).slick( {
-			slidesToShow: 1,
-			slidesToScroll: 1,
-			arrows: true,
-			fade: true,
-			asNavFor: '.slider-nav'
-		} );
-		$( '.slider-nav' ).slick( {
-			slidesToShow: 3,
-			slidesToScroll: 1,
-			asNavFor: '.slider-for',
+	};
+	let slickProject = ( tab_id ) => {
+		//console.log( tab_id );
+		$( '.' + tab_id ).slick( {
+			slidesPerRow: 4,
 			dots: false,
-			arrows: false,
-			rows: 0,
-			centerMode: true,
-			focusOnSelect: true
+			arrows: true,
+			rows: 2,
+			autoplay: false,
+			prevArrow: "<button type='button' class='slick-prev pull-left'></button>",
+			nextArrow: "<button type='button' class='slick-next pull-right'></button>",
+			autoplaySpeed: 5000,
+			responsive: [
+				{
+					breakpoint: 600,
+					centerPadding: '0px',
+					settings: {
+						slidesToShow: 1,
+					}
+				},
+			]
 		} );
 	};
 
-	$( function () {
-		$( "#accordion" ).accordion();
-	} );
+	function tab() {
+		$( 'ul.tabs li a' ).click( function () {
+			var tab_id = $( this ).attr( 'data-tab' );
+			//console.log( tab_id );
+			$( 'ul.tabs li a' ).removeClass( 'current' );
+			$( '.tab-content' ).removeClass( 'current' );
+
+			$( this ).addClass( 'current' );
+			$( "#" + tab_id ).addClass( 'current' );
+			slickProject( tab_id );
+		} );
+	}
 
 	function scrollToTop() {
 		var $window = $( window ),
@@ -139,5 +118,5 @@ jQuery( function ( $ ) {
 	closeMenu();
 	scrollToTop();
 	slickSlide();
-	filterPrice();
+	tab();
 } );
