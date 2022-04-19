@@ -74,6 +74,37 @@ jQuery( function ( $ ) {
 				},
 			]
 		} );
+		$( '.services__inner' ).slick( {
+			slidesToShow: 4,
+			slidesToScroll: 1,
+			dots: false,
+			arrows: true,
+			rows: 0,
+			autoplay: false,
+			prevArrow: "<button type='button' class='slick-prev pull-left'></button>",
+			nextArrow: "<button type='button' class='slick-next pull-right'></button>",
+			autoplaySpeed: 5000,
+			responsive: [
+				{
+					breakpoint: 1023,
+					settings: {
+						slidesToShow: 3,
+					}
+				},
+				{
+					breakpoint: 767,
+					settings: {
+						slidesToShow: 2,
+					}
+				},
+				{
+					breakpoint: 480,
+					settings: {
+						slidesToShow: 1,
+					}
+				},
+			]
+		} );
 	};
 	let slickProject = ( tab_id ) => {
 		//console.log( tab_id );
