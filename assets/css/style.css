@@ -1108,6 +1108,94 @@ ul.social svg {
 	margin: 10px 0 0;
 }
 
+/*CSS News*/
+.news {
+	position: relative;
+	padding: 50px 35px;
+}
+
+.news h2.title {
+	color: #000;
+	text-transform: uppercase;
+	font-size: 20px;
+	margin: 0 0 20px;
+}
+
+.news__wrap {
+	position: relative;
+	overflow: hidden;
+	display: grid;
+	gap: 50px;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.news__item {
+	position: relative;
+	overflow: hidden;
+	display: grid;
+	gap: 30px;
+	grid-template-columns: 30% 1fr;
+}
+
+.news__thumbnail {
+	position: relative;
+	overflow: hidden;
+}
+
+.news__thumbnail::after {
+	content: '';
+	display: block;
+	padding-bottom: 75%;
+}
+
+.news__thumbnail img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: all 1s ease;
+}
+
+.news__item:hover img {
+	transform: scale(1.1);
+}
+
+.news__content {
+	position: relative;
+	text-align: justify;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.news__content h3 {
+	font-size: 18px;
+	color: #000;
+
+}
+
+.news__content a {
+	color: #000;
+	text-decoration: none;
+}
+
+.news__item:hover .news__content a {
+	color: #fac14d;
+}
+
+.news__content p.entry-date {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	margin: 0;
+}
+
+.news__content p.entry-date img {
+	width: 16px;
+	margin-right: 5px;
+}
+
 /*Mobile*/
 @media (max-width: 1023px) {
 	.menu-toggle {
@@ -1246,6 +1334,10 @@ ul.social svg {
 		padding: 0;
 		font-size: 15px;
 	}
+
+	.news__wrap {
+		grid-template-columns: repeat(1, 1fr);
+	}
 }
 
 @media (max-width:480px) {
@@ -1258,6 +1350,10 @@ ul.social svg {
 	}
 
 	.site-footer__wrap {
+		grid-template-columns: repeat(1, 1fr);
+	}
+
+	.news__item {
 		grid-template-columns: repeat(1, 1fr);
 	}
 }
