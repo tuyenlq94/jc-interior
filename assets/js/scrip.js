@@ -38,9 +38,11 @@ jQuery( function ( $ ) {
 	let slickSlide = () => {
 		$( '.slider-hero' ).slick( {
 			slidesToShow: 1,
-			arrows: false,
+			arrows: true,
 			dots: true,
 			rows: 0,
+			prevArrow: "<button type='button' class='slick-prev pull-left'></button>",
+			nextArrow: "<button type='button' class='slick-next pull-right'></button>",
 			autoplay: true,
 			autoplaySpeed: 5000,
 		} );
